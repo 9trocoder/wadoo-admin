@@ -60,7 +60,7 @@ function Sidebar({ url }) {
       <div className='sidebar-top'>
         <div
           className='sidebar-item-icon'
-          onClick={() => navigate("/dashboards")}
+          onClick={() => navigate("/dashboard")}
         >
           <Dashboardicon color={url === "/dashboard" ? "#fdbe2c" : "#959597"} />
           <span
