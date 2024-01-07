@@ -19,7 +19,7 @@ function Sidebar({ url }) {
   const [showTransactionLink, setShowTransactionLink] = useState(false);
 
   const handleCustomerClick = () => {
-    if (url === "/customers/customers" || "/customers/potential_customers") {
+    if (url === "/customers" || "/customers/potential_customers") {
       setShowCustomerLink(!showCustomerLink);
       setShowTransactionLink(false);
     } else {
@@ -51,9 +51,7 @@ function Sidebar({ url }) {
       : "#959597";
 
   const customershow =
-    url === "/customers" ||
-    url === "/customers/customers" ||
-    url === "/customers/potential-customers"
+    url === "/customers" || url === "/customers/potential-customers"
       ? "#fdbe2c"
       : "#959597";
 
@@ -103,16 +101,12 @@ function Sidebar({ url }) {
             >
               <div
                 className='sidebar-item-special'
-                color={
-                  url === "/customers" || "/customers/customers"
-                    ? "#fdbe2c"
-                    : "#959597"
-                }
+                color={url === "/customers" ? "#fdbe2c" : "#959597"}
               />
               <span
                 className='sidebar-item-name'
                 style={{
-                  color: url === "/customers/customers" ? "#fdbe2c" : "#959597",
+                  color: url === "/customers" ? "#fdbe2c" : "#959597",
                 }}
               >
                 Customers
