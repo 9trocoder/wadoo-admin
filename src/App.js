@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter } from "react-router-dom";
+import "./App.css";
+import Forgotpassword from "./views/app/Authentication/forgotPassword";
+import Resetpassword from "./views/app/Authentication/resetPassword";
+import Signin from "./views/app/Authentication/signin";
+import Customers from "./views/app/dashboards/customer";
+import Dashboards from "./views/app/dashboards/dashboards";
+import Merchants from "./views/app/dashboards/merchants";
+import PotentialCustomers from "./views/app/dashboards/potentialCustomers";
+import Product from "./views/app/dashboards/product";
+import Services from "./views/app/dashboards/services";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Signin />,
+  },
+  {
+    path: "/forgot-password",
+    element: <Forgotpassword />,
+  },
+  {
+    path: "/reset-password",
+    element: <Resetpassword />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboards />,
+  },
+  {
+    path: "/services",
+    element: <Services />,
+  },
+  {
+    path: "/customers/customers",
+    element: <Customers />,
+  },
+  {
+    path: "/customers/potential-customers",
+    element: <PotentialCustomers />,
+  },
+  {
+    path: "/merchants",
+    element: <Merchants />,
+  },
+  {
+    path: "/transactions/product",
+    element: <Product />,
+  },
+]);
 
-export default App;
+export default router;

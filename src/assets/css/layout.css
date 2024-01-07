@@ -1,0 +1,274 @@
+/* APP LAYOUT */
+.app-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+}
+
+
+/* SIDEBAR */
+.sidebar-container {
+  width: 250px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-top {
+  margin-top: 107.272px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-item-icon {
+  display: flex;
+  padding: 10px 30px;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.sidebar-item-special {
+  width: 16px;
+  height: 16px;
+}
+
+.sidebar-item-icon:hover {
+  background-color: #fafafb;
+}
+.sidebar-item-name {
+  font-family: inherit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.logout-text {
+  color: #f46a6a;
+}
+.sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 57px;
+  padding-bottom: 40px;
+  gap: 15px;
+}
+
+.sidebar-logo {
+  width: 105px;
+  height: 47.272px;
+}
+
+.sidebar-copyright {
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+  color: #000;
+}
+
+/* TOP NAVIGATION BAR */
+
+.topnav-container {
+  background-color: #ffffff;
+  display: flex;
+  padding: 18.5px 24px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.topnav-title {
+  font-family: inherit;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  color: #000;
+}
+
+.topnav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.topnav-userimg {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+/* NOTIFICATION */
+.topnav-notification {
+  position: relative;
+}
+
+.topnav-notification-btn {
+  cursor: pointer;
+}
+.topnav-notification-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.topnav-notification-body {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  gap: 1px;
+  border-radius: 10px;
+  border: 1px solid #fafafb;
+  background-color: #fff;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+  margin-top: 35px;
+  margin-right: -15px;
+}
+
+/* NOTIFICATION ITEMS */
+.topnav-notification-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 20px 24px;
+  align-items: start;
+}
+
+.topnav-notification-item:hover,
+.topnav-notification-item:focus {
+  background-color: #fafafb;
+}
+
+.topnav-notification-items {
+  height: 0;
+  overflow: hidden;
+}
+
+.topnav-notification-items.topnav-notification-itemsopen {
+  display: flex;
+  height: auto;
+  gap: 20px;
+}
+
+.topnav-notification-item-top {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.topnav-notification-title {
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #000;
+  text-align: left;
+}
+
+.topnav-notification-datetime {
+  display: flex;
+  align-items: center;
+  color: #959597;
+}
+
+.topnav-notification-date,
+.topnav-notification-time {
+  font-family: inherit;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 11px;
+  color: #959597;
+}
+
+.topnav-notification-time {
+  padding-left: 5px;
+}
+
+.topnav-notification-items-content {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topnav-notification-items-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 30px;
+  border-radius: 10px;
+  border: 1px solid #fdbe2c;
+  background-color: #fff;
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 12px;
+  color: #fdbe2c;
+  cursor: pointer;
+}
+
+.topnav-notification-items-btn:hover,
+.topnav-notification-items-btn:focus {
+  background-color: #fdbe2c;
+  color: #fff;
+}
+
+.seemore {
+  padding: 10px 24px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #fdbe2c;
+}
+
+/* PAGE CONTENT */
+.page-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  padding: 24px 24px 0 24px;
+  gap: 24px;
+}
+
+.app-container-fluid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.app-container-fluid::-webkit-scrollbar {
+  display: none;
+}
+

@@ -1,0 +1,105 @@
+.servicesview-container {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 24px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* SERVICES TOP NAVIGATION */
+
+.servicestopnav-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.servicestopnav-container-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.services-inputForm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 30px;
+  width: 324px;
+  background: #fafafb;
+  border-radius: 10px;
+  border: 2px solid #fafafb;
+}
+
+.services-input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+}
+
+.services-input:focus {
+  outline: none;
+}
+
+.services-inputForm:focus-within {
+  border: 2px solid #fdbe2c;
+}
+
+.services-filter {
+  display: flex;
+  padding: 10px 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: #fdbe2c;
+  cursor: pointer;
+}
+
+.services-add-btn {
+  display: flex;
+  padding: 10px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #fdbe2c;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 12px;
+  color: #fff;
+}
+
+.service-action {
+  cursor: pointer;
+}
+
+.tptable-nameimage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tptable-text-image {
+  display: flex;
+  width: 30px;
+  height: 30px !important;
+  padding: 7px 7px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: rgba(253,190,44,0.10);
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 12px;
+  color: #FDBE2C;
+  
+}

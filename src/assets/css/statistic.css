@@ -1,0 +1,37 @@
+.statics-container-fluid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.static-card-container {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    background: #FFF;
+    padding: 28px 24px;
+    border-radius: 10px;
+    
+}
+
+.static-card-info {
+    display: grid;
+}
+
+.static-card-info-num {
+    color: #000000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    font-family: inherit;
+}
+
+.static-card-info-name {
+    color: #030229;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    margin-top: 5px;
+}
