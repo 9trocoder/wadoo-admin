@@ -9,6 +9,7 @@ import Merchants from "./views/app/dashboards/merchants";
 import PotentialCustomers from "./views/app/dashboards/potentialCustomers";
 import Product from "./views/app/dashboards/product";
 import Services from "./views/app/dashboards/services";
+import Commission from "./views/app/dashboards/commission";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
     path: "/transactions/product",
     element: <Product />,
   },
+  {
+    path: "/transactions/commission",
+    element: <Commission />,
+  }
 ]);
 
 export default router;

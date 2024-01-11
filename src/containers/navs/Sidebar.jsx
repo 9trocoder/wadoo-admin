@@ -166,7 +166,7 @@ function Sidebar({ url }) {
           <>
             <div
               className='sidebar-item-icon'
-              onClick={() => navigate("transactions/product")}
+              onClick={() => navigate("/transactions/product")}
             >
               <div
                 className='sidebar-item-special'
