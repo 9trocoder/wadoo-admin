@@ -206,7 +206,10 @@ function Sidebar({ url }) {
                 Commission
               </span>
             </div>
-            <div className='sidebar-item-icon'>
+            <div
+              className='sidebar-item-icon'
+              onClick={() => navigate("/transactions/invoice")}
+            >
               <div
                 className='sidebar-item-special'
                 color={url === "/transactions/invoice" ? "#fdbe2c" : "#959597"}
