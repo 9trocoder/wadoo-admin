@@ -1,12 +1,19 @@
 import React from "react";
 import { topProductData } from "../../data/topProducts";
+import { useNavigate } from "react-router-dom";
 
 function TopProducts() {
+  let navigate = useNavigate();
   return (
     <div className='top-products-container'>
       <div className='top-products-top'>
-        <p className='top-products-title'>Recent Transactions</p>
-        <p className='top-products-seemore'>See more</p>
+        <p className='top-products-title'>Top Services</p>
+        <p
+          className='top-products-seemore'
+          onClick={() => navigate("/services")}
+        >
+          See more
+        </p>
       </div>
       <div className='top-products-table'>
         <table className='tptable'>

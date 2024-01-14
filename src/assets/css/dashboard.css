@@ -278,39 +278,73 @@
   line-height: 12px;
 }
 
-
-
 .tptable tr:nth-child(even) {
   background-color: #fafafb;
   border-radius: 5px;
 }
 
 .tptable-image {
-    width: 30px;
-    height: 30px;
-    object-fit: cover;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
 }
 
 .tptable-service-td {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .tptable-service-name {
-    font-family: inherit;
-    color: #000000;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 12px;
+  font-family: inherit;
+  color: #000000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
 }
 
 .tptable-merchant-name {
-    color: #959597;
-    font-family: inherit;
-    font-size: 11px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 11px;
+  color: #959597;
+  font-family: inherit;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 11px;
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.toast.successful {
+  color: #34c38f;
+  background-color: #e0f5eb;
+}
+
+.toast-content {
+  padding: 10px 24px;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast-content span {
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
 }

@@ -1,12 +1,14 @@
 import React from "react";
 import { recenttransactionData } from "../../data/recenttransaction";
+import { useNavigate } from "react-router-dom";
 
 function RecentTransaction() {
+  let navigate = useNavigate();
   return (
     <div className='recent-transactions-container'>
       <div className='recent-transactions-top'>
         <p className='recent-transactions-title'>Recent Transactions</p>
-        <p className='recent-transactions-seemore'>See more</p>
+        <p className='recent-transactions-seemore' onClick={() => navigate("/transactions/product")}>See more</p>
       </div>
       <div className='recent-transactions-table'>
         <table className='rttable'>
