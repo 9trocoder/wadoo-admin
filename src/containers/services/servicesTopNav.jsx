@@ -8,9 +8,22 @@ import {
 } from "../../constants/defaultValues";
 import InputField from "../../components/InputField";
 import TextArea from "../../components/TextArea";
+import Selection from "../../components/Selection";
 
 function ServicesTopNav() {
   const [showAddService, setShowAddService] = useState(false);
+  const options = ["Option 1", "Option 2", "Option 3"];
+  const [showOptions, setShowOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    setShowOptions(false);
+  };
+
+  const toggleOptions = () => {
+    setShowOptions(!showOptions);
+  };
 
   return (
     <div className='servicetopnav-container-body'>
@@ -53,7 +66,14 @@ function ServicesTopNav() {
             </div>
             <div className='payout-modal-content'>
               <div className='payout-modal-form'>
-                <InputField label='Business Name' placeholder='Select Name' />
+                <Selection
+                  options={options}
+                  showOptions={showOptions}
+                  toggleOptions={toggleOptions}
+                  selectedOption={selectedOption}
+                  handleOptionClick={handleOptionClick}
+                  label='Business Name'
+                />
                 <InputField label='Service Name' placeholder='Service Name' />
                 <TextArea placeholder='Description' label='Description' />
                 <InputField label='Price' placeholder='Price' type='number' />
