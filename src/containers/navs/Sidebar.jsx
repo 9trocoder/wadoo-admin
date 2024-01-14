@@ -238,7 +238,10 @@ function Sidebar({ url }) {
             Audit Log
           </span>
         </div>
-        <div className='sidebar-item-icon'>
+        <div
+          className='sidebar-item-icon'
+          onClick={() => navigate("/approvals")}
+        >
           <Approveicon color={url === "/approvals" ? "#fdbe2c" : "#959597"} />
           <span
             className='sidebar-item-name'

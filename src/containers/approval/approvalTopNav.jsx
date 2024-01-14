@@ -1,7 +1,7 @@
 import React from "react";
 import { circleIcon, filterIcon } from "../../constants/defaultValues";
 
-function AuditLogTopNav() {
+function ApprovalTopNav() {
   return (
     <div className='servicetopnav-container-body'>
       <div className='servicestopnav-container'>
@@ -21,4 +21,4 @@ function AuditLogTopNav() {
   );
 }
 
-export default AuditLogTopNav;
+export default ApprovalTopNav;
