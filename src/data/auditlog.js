@@ -1,4 +1,4 @@
-export const auditlogData = [
+export const auditLogData = [
   {
     id: 0,
     s_n: "S/N",

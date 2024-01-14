@@ -11,6 +11,7 @@ import Product from "./views/app/dashboards/product";
 import Services from "./views/app/dashboards/services";
 import Commission from "./views/app/dashboards/commission";
 import Invoice from "./views/app/dashboards/invoice";
+import AuditLog from "./views/app/dashboards/auditLog";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
     path: "/transactions/invoice",
     element: <Invoice />,
   },
+  {
+    path: "/audit-log",
+    element: <AuditLog />
+  }
 ]);
 
 export default router;

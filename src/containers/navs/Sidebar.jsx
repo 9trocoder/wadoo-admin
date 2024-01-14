@@ -226,11 +226,14 @@ function Sidebar({ url }) {
             </div>
           </>
         )}
-        <div className='sidebar-item-icon'>
-          <Auditicon color={url === "/audit_log" ? "#fdbe2c" : "#959597"} />
+        <div
+          className='sidebar-item-icon'
+          onClick={() => navigate("/audit-log")}
+        >
+          <Auditicon color={url === "/audit-log" ? "#fdbe2c" : "#959597"} />
           <span
             className='sidebar-item-name'
-            style={{ color: url === "/audit_log" ? "#fdbe2c" : "#959597" }}
+            style={{ color: url === "/audit-log" ? "#fdbe2c" : "#959597" }}
           >
             Audit Log
           </span>
