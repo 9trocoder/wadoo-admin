@@ -10,6 +10,7 @@ import ImageInput from "../../components/ImageInput";
 
 function ServicesTopNav() {
   const [showAddService, setShowAddService] = useState(false);
+  const [showServiceDetails, setShowServiceDetails] = useState(false);
   const options = ["Option 1", "Option 2", "Option 3"];
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
@@ -35,7 +36,7 @@ function ServicesTopNav() {
 
   const handleDeletImage = () => {
     setSelectedImage(null);
-  }
+  };
 
   return (
     <div className='servicetopnav-container-body'>
@@ -65,7 +66,10 @@ function ServicesTopNav() {
             onCloseModal={() => setShowAddService(false)}
             btnTxt='Add Service'
             title='Add Service'
-            btnClick={() => {}}
+            btnClick={() => {
+              setShowServiceDetails(true);
+              setShowAddService(false);
+            }}
           >
             <Selection
               options={options}
@@ -90,6 +94,16 @@ function ServicesTopNav() {
             </div>
           </ModalLayout>
         </>
+      )}
+
+      {showServiceDetails && (
+        <ModalLayout
+          btnbool={false}
+          onCloseModal={() => {
+            setShowServiceDetails(false);
+          }}
+          title='Service Details'
+        ></ModalLayout>
       )}
     </div>
   );

@@ -69,14 +69,12 @@
   right: 0;
   left: 0;
   top: 0;
-  z-index: 1;
 }
 
 .payout-modal-body {
   position: fixed;
   display: flex;
   flex-direction: column;
-  z-index: 2;
   background: #fff;
   right: 0;
   top: 0;

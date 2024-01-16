@@ -1,11 +1,24 @@
 import React from "react";
 import { closeIcon } from "../constants/defaultValues";
 
-function ModalLayout({ onCloseModal, children, title, btnbool, btnClick, btnTxt }) {
+function ModalLayout({
+  onCloseModal,
+  children,
+  title,
+  btnbool,
+  btnClick,
+  btnTxt,
+  zindex,
+}) {
+  let secondIndex = zindex + 1;
   return (
     <>
-      <div className='payout-modal-overlay' onClick={onCloseModal} />
-      <div className='payout-modal-body'>
+      <div
+        className='payout-modal-overlay'
+        onClick={onCloseModal}
+        style={{ zIndex: `${zindex}` }}
+      />
+      <div className='payout-modal-body' style={{ zIndex: `${secondIndex}` }}>
         <div className='payout-modal-top'>
           <label htmlFor='' className='payout-modal-title'>
             {title}
