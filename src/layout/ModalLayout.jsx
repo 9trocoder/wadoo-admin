@@ -15,7 +15,6 @@ function ModalLayout({
     <>
       <div
         className='payout-modal-overlay'
-        onClick={onCloseModal}
         style={{ zIndex: `${zindex}` }}
       />
       <div className='payout-modal-body' style={{ zIndex: `${secondIndex}` }}>
