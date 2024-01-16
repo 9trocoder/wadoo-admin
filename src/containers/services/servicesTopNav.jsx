@@ -9,6 +9,7 @@ import {
 import InputField from "../../components/InputField";
 import TextArea from "../../components/TextArea";
 import Selection from "../../components/Selection";
+import ModalLayout from "../../layout/ModalLayout";
 
 function ServicesTopNav() {
   const [showAddService, setShowAddService] = useState(false);
@@ -48,39 +49,25 @@ function ServicesTopNav() {
       </div>
       {showAddService && (
         <>
-          <div
-            className='payout-modal-overlay'
-            onClick={() => setShowAddService(false)}
-          />
-          <div className='payout-modal-body'>
-            <div className='payout-modal-top'>
-              <label htmlFor='' className='payout-modal-title'>
-                Add Service
-              </label>
-              <div
-                className='payout-modal-closebtn'
-                onClick={() => setShowAddService(false)}
-              >
-                {closeIcon}
-              </div>
-            </div>
-            <div className='payout-modal-content'>
-              <div className='payout-modal-form'>
-                <Selection
-                  options={options}
-                  showOptions={showOptions}
-                  toggleOptions={toggleOptions}
-                  selectedOption={selectedOption}
-                  handleOptionClick={handleOptionClick}
-                  label='Business Name'
-                />
-                <InputField label='Service Name' placeholder='Service Name' />
-                <TextArea placeholder='Description' label='Description' />
-                <InputField label='Price' placeholder='Price' type='number' />
-              </div>
-              <button className='payout-modal-btn'>Add Service</button>
-            </div>
-          </div>
+          <ModalLayout
+            btnbool={true}
+            onCloseModal={() => setShowAddService(false)}
+            btnTxt='Add Service'
+            title='Add Service'
+            btnClick={() => {}}
+          >
+            <Selection
+              options={options}
+              showOptions={showOptions}
+              toggleOptions={toggleOptions}
+              selectedOption={selectedOption}
+              handleOptionClick={handleOptionClick}
+              label='Business Name'
+            />
+            <InputField label='Service Name' placeholder='Service Name' />
+            <TextArea placeholder='Description' label='Description' />
+            <InputField label='Price' placeholder='Price' type='number' />
+          </ModalLayout>
         </>
       )}
     </div>
