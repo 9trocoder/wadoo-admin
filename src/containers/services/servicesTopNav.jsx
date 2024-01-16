@@ -6,12 +6,14 @@ import TextArea from "../../components/TextArea";
 import Selection from "../../components/Selection";
 import ModalLayout from "../../layout/ModalLayout";
 import Checkbox from "../../components/Checkbox";
+import ImageInput from "../../components/ImageInput";
 
 function ServicesTopNav() {
   const [showAddService, setShowAddService] = useState(false);
   const options = ["Option 1", "Option 2", "Option 3"];
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
@@ -25,6 +27,15 @@ function ServicesTopNav() {
   const handleCheckbox = (isChecked) => {
     console.log("I just checked 9trocoder" + isChecked);
   };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) setSelectedImage(file);
+  };
+
+  const handleDeletImage = () => {
+    setSelectedImage(null);
+  }
 
   return (
     <div className='servicetopnav-container-body'>
@@ -68,6 +79,15 @@ function ServicesTopNav() {
             <TextArea placeholder='Description' label='Description' />
             <InputField label='Price' placeholder='Price' type='number' />
             <Checkbox label='Negotiable' onChange={handleCheckbox} />
+
+            <div className='service-image'>
+              <p className='service-image-text'>Service Images</p>
+              <ImageInput
+                selectedImage={selectedImage}
+                handleSelectedImage={handleImageChange}
+                handleDeletImage={handleDeletImage}
+              />
+            </div>
           </ModalLayout>
         </>
       )}
