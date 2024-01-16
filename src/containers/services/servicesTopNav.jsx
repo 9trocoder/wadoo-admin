@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 
-import {
-  addIcon,
-  circleIcon,
-  closeIcon,
-  filterIcon,
-} from "../../constants/defaultValues";
+import { addIcon, circleIcon, filterIcon } from "../../constants/defaultValues";
 import InputField from "../../components/InputField";
 import TextArea from "../../components/TextArea";
 import Selection from "../../components/Selection";
 import ModalLayout from "../../layout/ModalLayout";
+import Checkbox from "../../components/Checkbox";
 
 function ServicesTopNav() {
   const [showAddService, setShowAddService] = useState(false);
@@ -24,6 +20,10 @@ function ServicesTopNav() {
 
   const toggleOptions = () => {
     setShowOptions(!showOptions);
+  };
+
+  const handleCheckbox = (isChecked) => {
+    console.log("I just checked 9trocoder" + isChecked);
   };
 
   return (
@@ -67,6 +67,7 @@ function ServicesTopNav() {
             <InputField label='Service Name' placeholder='Service Name' />
             <TextArea placeholder='Description' label='Description' />
             <InputField label='Price' placeholder='Price' type='number' />
+            <Checkbox label='Negotiable' onChange={handleCheckbox} />
           </ModalLayout>
         </>
       )}
