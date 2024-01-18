@@ -81,6 +81,8 @@
   bottom: 0;
   width: 500px;
   box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+  animation: Overlay--motion-slideInLeft 0.25s cubic-bezier(0.33, 1, 0.68, 1) 0s
+    1 normal none running;
 }
 
 .payout-modal-top {
@@ -345,4 +347,10 @@
   font-style: normal;
   font-weight: 400;
   line-height: 12px;
+}
+
+@keyframes Overlay--motion-slideInLeft {
+  0% {
+    transform: translateX(100%);
+  }
 }
