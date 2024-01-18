@@ -7,6 +7,16 @@ import "../../assets/css/customers.css";
 
 function CustomersTopNav() {
   const [showAddCustomer, setShowAddCustomer] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) setSelectedImage(file);
+  };
+
+  const handleDeletImage = () => {
+    setSelectedImage(null);
+  };
   return (
     <div className='servicetopnav-container-body'>
       <div className='servicestopnav-container'>
@@ -37,7 +47,11 @@ function CustomersTopNav() {
             title='Add Customers'
             btnClick={() => {}}
           >
-            <AddPhoto />
+            <AddPhoto
+              selectedImage={selectedImage}
+              handleSelectedImage={handleImageChange}
+              handleDeletImage={handleDeletImage}
+            />
             <div className='spacer'></div>
             <div className='add-customer-input-container'>
               <InputField
@@ -63,7 +77,7 @@ function CustomersTopNav() {
                 placeholder='Phone Number'
               />
             </div>
-            <InputField label="Address" type="text" placeholder="Address" />
+            <InputField label='Address' type='text' placeholder='Address' />
           </ModalLayout>
         </>
       )}
