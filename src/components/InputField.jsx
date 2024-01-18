@@ -2,7 +2,7 @@ import React from "react";
 
 function InputField({ label, type, onChange, placeholder }) {
   return (
-    <>
+    <div>
       <div className='flex-column'>
         <label htmlFor=''>{label}</label>
       </div>
@@ -14,7 +14,7 @@ function InputField({ label, type, onChange, placeholder }) {
           onChange={onChange}
         />
       </div>
-    </>
+    </div>
   );
 }
 

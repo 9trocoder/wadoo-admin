@@ -152,7 +152,7 @@
   border: none;
   background-color: transparent;
   padding: 20px 24px;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .topnav-notification-item:hover,

@@ -29,15 +29,21 @@ function CustomersTable() {
                 </p>
               </div>
             </td>
-            <td className='tptable-service-td'>
-              <p className='tptable-service-name'>{item.customer_email}</p>
-              <p className='tptable-merchant-name'>{item.phone_number}</p>
+            <td>
+              <div className='tptable-service-td'>
+                <p className='tptable-service-name'>{item.customer_email}</p>
+                <p className='tptable-merchant-name'>{item.phone_number}</p>
+              </div>
             </td>
+
             <td>{item.address}</td>
-            <td className='tptable-service-td'>
-              <p className='tptable-service-name'>{item.last_login_date}</p>
-              <p className='tptable-merchant-name'>{item.date_joined}</p>
+            <td>
+              <div className='tptable-service-td'>
+                <p className='tptable-service-name'>{item.last_login_date}</p>
+                <p className='tptable-merchant-name'>{item.date_joined}</p>
+              </div>
             </td>
+
             <td className='rttable-status'>
               <p className='rttable-status-container'>{item.status}</p>
             </td>

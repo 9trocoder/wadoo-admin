@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import { addIcon, circleIcon, closeIcon, filterIcon } from '../../constants/defaultValues';
-import InputField from '../../components/InputField';
-import TextArea from '../../components/TextArea';
+import React, { useState } from "react";
+import { addIcon, circleIcon, filterIcon } from "../../constants/defaultValues";
+import InputField from "../../components/InputField";
+import ModalLayout from "../../layout/ModalLayout";
+import AddPhoto from "../../components/AddPhoto";
+import "../../assets/css/customers.css";
 
 function CustomersTopNav() {
-    const [showAddCustomer, setShowAddCustomer] = useState(false);
+  const [showAddCustomer, setShowAddCustomer] = useState(false);
   return (
     <div className='servicetopnav-container-body'>
       <div className='servicestopnav-container'>
@@ -28,36 +30,45 @@ function CustomersTopNav() {
       </div>
       {showAddCustomer && (
         <>
-          <div
-            className='payout-modal-overlay'
-            onClick={() => setShowAddCustomer(false)}
-          />
-          <div className='payout-modal-body'>
-            <div className='payout-modal-top'>
-              <label htmlFor='' className='payout-modal-title'>
-                Add Customer
-              </label>
-              <div
-                className='payout-modal-closebtn'
-                onClick={() => setShowAddCustomer(false)}
-              >
-                {closeIcon}
-              </div>
+          <ModalLayout
+            btnbool={true}
+            onCloseModal={() => setShowAddCustomer(false)}
+            btnTxt='Add Customer'
+            title='Add Customers'
+            btnClick={() => {}}
+          >
+            <AddPhoto />
+            <div className='spacer'></div>
+            <div className='add-customer-input-container'>
+              <InputField
+                label='First Name'
+                type='text'
+                placeholder='First Name'
+              />
+              <InputField
+                label='Last Name'
+                type='text'
+                placeholder='Last Name'
+              />
             </div>
-            <div className='payout-modal-content'>
-              <div className='payout-modal-form'>
-                <InputField label='Business Name' placeholder='Select Name' />
-                <InputField label='Service Name' placeholder='Service Name' />
-                <TextArea placeholder='Description' label='Description' />
-                <InputField label='Price' placeholder='Price' type='number' />
-              </div>
-              <button className='payout-modal-btn'>Add Service</button>
+            <div className='add-customer-input-container'>
+              <InputField
+                label='Email Address'
+                type='email'
+                placeholder='Email Address'
+              />
+              <InputField
+                label='Phone Number'
+                type='tel'
+                placeholder='Phone Number'
+              />
             </div>
-          </div>
+            <InputField label="Address" type="text" placeholder="Address" />
+          </ModalLayout>
         </>
       )}
     </div>
-  )
+  );
 }
 
-export default CustomersTopNav
+export default CustomersTopNav;
