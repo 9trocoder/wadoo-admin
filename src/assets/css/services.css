@@ -323,3 +323,21 @@
 .optionmenu-item:hover {
   background-color: #fafafb;
 }
+
+
+/* PAYOUT MODAL BACK AND TITLE */
+.payout-modal-backtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-backbtn {
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.service-image-edit {
+  display: flex;
+  gap: 10px;
+}

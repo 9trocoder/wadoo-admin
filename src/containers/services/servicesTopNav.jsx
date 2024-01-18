@@ -17,6 +17,7 @@ import { serviceDetailsData } from "../../data/service_details_dadta";
 function ServicesTopNav() {
   const [showAddService, setShowAddService] = useState(false);
   const [showServiceDetails, setShowServiceDetails] = useState(false);
+  const [showEditService, setShowEditService] = useState(false);
   const [showOptionMenu, setShowOptionMenu] = useState(false);
   const options = ["Option 1", "Option 2", "Option 3"];
   const [showOptions, setShowOptions] = useState(false);
@@ -155,7 +156,14 @@ function ServicesTopNav() {
                           onClick={() => setShowOptionMenu(false)}
                         />
                         <div className='optionmenu-body'>
-                          <p className='optionmenu-item'>Edit</p>
+                          <p
+                            onClick={() => {
+                              setShowEditService(true);
+                            }}
+                            className='optionmenu-item'
+                          >
+                            Edit
+                          </p>
                           <p className='optionmenu-item'>Suspend</p>
                           <p className='optionmenu-item'>Delete</p>
                         </div>
@@ -175,6 +183,51 @@ function ServicesTopNav() {
               alt=''
               className='imageinput-selection-box'
             />
+          </div>
+        </ModalLayout>
+      )}
+
+      {showEditService && (
+        <ModalLayout
+          btnbool={true}
+          btnTxt='Save'
+          btnClick={() => setShowEditService(false)}
+          onCloseModal={() => setShowEditService(false)}
+          backbtn={true}
+          title='Edit Service'
+          backbtnClicked={() => setShowEditService(false)}
+        >
+          <Selection
+            options={options}
+            showOptions={showOptions}
+            toggleOptions={toggleOptions}
+            selectedOption={selectedOption}
+            handleOptionClick={handleOptionClick}
+            label='Business Name'
+          />
+          <InputField label='Service Name' placeholder='Service Name' />
+          <TextArea placeholder='Description' label='Description' />
+          <InputField label='Price' placeholder='Price' type='number' />
+          <Checkbox label='Negotiable' onChange={handleCheckbox} />
+
+          <div className='service-image'>
+            <p className='service-image-text'>Service Images</p>
+            <div className='service-image-edit'>
+              <img
+                src={
+                  selectedImage !== null
+                    ? URL.createObjectURL(selectedImage)
+                    : ""
+                }
+                alt=''
+                className='imageinput-selection-box'
+              />
+              <ImageInput
+                selectedImage={selectedImage}
+                handleSelectedImage={handleImageChange}
+                handleDeletImage={handleDeletImage}
+              />
+            </div>
           </div>
         </ModalLayout>
       )}

@@ -1,5 +1,5 @@
 import React from "react";
-import { closeIcon } from "../constants/defaultValues";
+import { closeIcon, leftArrowIcon } from "../constants/defaultValues";
 
 function ModalLayout({
   onCloseModal,
@@ -9,19 +9,26 @@ function ModalLayout({
   btnClick,
   btnTxt,
   zindex,
+  backbtn,
+  backbtnClicked,
 }) {
   let secondIndex = zindex + 1;
   return (
     <>
-      <div
-        className='payout-modal-overlay'
-        style={{ zIndex: `${zindex}` }}
-      />
+      <div className='payout-modal-overlay' style={{ zIndex: `${zindex}` }} />
       <div className='payout-modal-body' style={{ zIndex: `${secondIndex}` }}>
         <div className='payout-modal-top'>
-          <label htmlFor='' className='payout-modal-title'>
-            {title}
-          </label>
+          <div className='payout-modal-backtitle'>
+            {backbtn && (
+              <div className='modal-backbtn' onClick={backbtnClicked}>
+                {leftArrowIcon}
+              </div>
+            )}
+            <label htmlFor='' className='payout-modal-title'>
+              {title}
+            </label>
+          </div>
+
           <div onClick={onCloseModal} className='payout-modal-closebtn'>
             {closeIcon}
           </div>
