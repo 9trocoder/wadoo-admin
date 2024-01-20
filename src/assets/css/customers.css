@@ -72,3 +72,30 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
+
+/* CUSTOMER DETAILS */
+.service-image-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.service-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 9999px;
+}
+
+.service-img-edit {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 12px;
+  color: #FDBE2C;
+  margin-bottom: 40px;
+}

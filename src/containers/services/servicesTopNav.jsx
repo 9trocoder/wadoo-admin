@@ -12,7 +12,7 @@ import Selection from "../../components/Selection";
 import ModalLayout from "../../layout/ModalLayout";
 import Checkbox from "../../components/Checkbox";
 import ImageInput from "../../components/ImageInput";
-import { serviceDetailsData } from "../../data/service_details_dadta";
+import { serviceDetailsData } from "../../data/service_details_data";
 
 function ServicesTopNav() {
   const [showAddService, setShowAddService] = useState(false);

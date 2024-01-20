@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { addIcon, circleIcon, filterIcon } from "../../constants/defaultValues";
+import { addIcon, circleIcon, filterIcon, optionIcon } from "../../constants/defaultValues";
 import InputField from "../../components/InputField";
 import ModalLayout from "../../layout/ModalLayout";
 import AddPhoto from "../../components/AddPhoto";
 import "../../assets/css/customers.css";
+import { customerDetailsData } from "../../data/customer_details_data";
 
 function CustomersTopNav() {
   const [showAddCustomer, setShowAddCustomer] = useState(false);
+  const [showCustomerDetails, setShowCustomerDetails] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showOptionMenu, setShowOptionMenu] = useState(false);
+  const [showEditCustomer, setShowEditCustomer] = useState(false);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -45,7 +49,10 @@ function CustomersTopNav() {
             onCloseModal={() => setShowAddCustomer(false)}
             btnTxt='Add Customer'
             title='Add Customers'
-            btnClick={() => {}}
+            btnClick={() => {
+              setShowAddCustomer(false);
+              setShowCustomerDetails(true);
+            }}
           >
             <AddPhoto
               selectedImage={selectedImage}
@@ -55,7 +62,7 @@ function CustomersTopNav() {
             <div className='spacer'></div>
             <div className='add-customer-input-container'>
               <InputField
-                label='First Name'
+                label='Firs–-t Name'
                 type='text'
                 placeholder='First Name'
               />
@@ -80,6 +87,96 @@ function CustomersTopNav() {
             <InputField label='Address' type='text' placeholder='Address' />
           </ModalLayout>
         </>
+      )}
+
+      {showCustomerDetails && (
+        <ModalLayout
+          btnbool={false}
+          onCloseModal={() => setShowCustomerDetails(false)}
+          title='Customer Details'
+        >
+          <div className='service-image-details'>
+            <img
+              src={
+                selectedImage != null ? URL.createObjectURL(selectedImage) : ""
+              }
+              alt='Profile'
+              className='service-img'
+            />
+            <label className='service-img-edit'>Edit Profile</label>
+          </div>
+          <table className='service-details-table'>
+            {customerDetailsData.map((item, index) => (
+              <div key={index}>
+                <tr>
+                  <th>First Name</th>
+                  <td>{item.first_name}</td>
+                </tr>
+                <tr>
+                  <th>Last Name</th>
+                  <td>{item.last_name}</td>
+                </tr>
+                <tr>
+                  <th>Email Address</th>
+                  <td>{item.email}</td>
+                </tr>
+                <tr>
+                  <th>Phone Number</th>
+                  <td>{item.phone_number}</td>
+                </tr>
+                <tr>
+                  <th>Address</th>
+                  <td>{item.address}</td>
+                </tr>
+                <tr>
+                  <th>Date Created</th>
+                  <td>{item.date_created}</td>
+                </tr>
+                <tr>
+                  <th>Last Login Date</th>
+                  <td>{item.last_login_date}</td>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <td className='rttable-status'>
+              <p className='rttable-status-container'>{item.status}</p>
+            </td>
+                </tr>
+                <tr>
+                  <th>Actions</th>
+                  <td className='optionbtn-modal'>
+                    <div
+                      className='optionbtn'
+                      onClick={() => setShowOptionMenu(true)}
+                    >
+                      {optionIcon}
+                    </div>
+                    {showOptionMenu && (
+                      <>
+                        <div
+                          className='optionmenu-overlay'
+                          onClick={() => setShowOptionMenu(false)}
+                        />
+                        <div className='optionmenu-body'>
+                          <p
+                            onClick={() => {
+                              setShowEditCustomer(true);
+                            }}
+                            className='optionmenu-item'
+                          >
+                            Edit
+                          </p>
+                          <p className='optionmenu-item'>Suspend</p>
+                          <p className='optionmenu-item'>Delete</p>
+                        </div>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              </div>
+            ))}
+          </table>
+        </ModalLayout>
       )}
     </div>
   );
