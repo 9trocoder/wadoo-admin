@@ -69,6 +69,7 @@
   right: 0;
   left: 0;
   top: 0;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .payout-modal-body {
@@ -80,6 +81,21 @@
   top: 0;
   bottom: 0;
   width: 500px;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+  animation: Overlay--motion-slideInLeft 0.25s cubic-bezier(0.33, 1, 0.68, 1) 0s
+    1 normal none running;
+}
+
+.payout-bigmodal-body {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 80vw;
+  max-width: 1000px;
   box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
   animation: Overlay--motion-slideInLeft 0.25s cubic-bezier(0.33, 1, 0.68, 1) 0s
     1 normal none running;

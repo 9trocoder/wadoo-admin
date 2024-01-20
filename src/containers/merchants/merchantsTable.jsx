@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { merchantData } from "../../data/merchant";
 import { optionIcon } from "../../constants/defaultValues";
+import BigModalLayout from "../../layout/BigModalLayout";
+import "../../assets/css/merchant.css";
 
 function MerchantsTable() {
   const [clickedMenu, setClickedMenu] = useState("0");
+  const [showModal, setShowModal] = useState(false);
 
   const handleIt = (index) => {
     if (clickedMenu === index) {
@@ -69,14 +72,22 @@ function MerchantsTable() {
                     className='optionmenu-overlay'
                     onClick={() => setClickedMenu("0")}
                   />
-                  <div className='optionmenu-body'>
+                  <div className='optionmmenu-body'>
                     <p
                       onClick={() => setClickedMenu("0")}
                       className='optionmenu-itemm'
                     >
                       Verify Merchant
                     </p>
-                    <p className='optionmenu-itemm'>View</p>
+                    <p
+                      className='optionmenu-itemm'
+                      onClick={() => {
+                        setClickedMenu("0");
+                        setShowModal(true);
+                      }}
+                    >
+                      View
+                    </p>
                     <p className='optionmenu-itemm'>Suspend</p>
                     <p className='optionmenu-itemm'>Delete</p>
                   </div>
@@ -86,6 +97,12 @@ function MerchantsTable() {
           </tr>
         ))}
       </table>
+      {showModal && (
+        <BigModalLayout
+          onCloseModal={() => setShowModal(false)}
+          title='Business Name'
+        ></BigModalLayout>
+      )}
     </div>
   );
 }
