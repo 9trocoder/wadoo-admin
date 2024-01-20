@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { addIcon, circleIcon, filterIcon, optionIcon } from "../../constants/defaultValues";
+import {
+  addIcon,
+  circleIcon,
+  filterIcon,
+  optionIcon,
+} from "../../constants/defaultValues";
 import InputField from "../../components/InputField";
 import ModalLayout from "../../layout/ModalLayout";
 import AddPhoto from "../../components/AddPhoto";
@@ -62,7 +67,7 @@ function CustomersTopNav() {
             <div className='spacer'></div>
             <div className='add-customer-input-container'>
               <InputField
-                label='Firs–-t Name'
+                label='First Name'
                 type='text'
                 placeholder='First Name'
               />
@@ -103,7 +108,14 @@ function CustomersTopNav() {
               alt='Profile'
               className='service-img'
             />
-            <label className='service-img-edit'>Edit Profile</label>
+            <label
+              onClick={() => {
+                setShowEditCustomer(true);
+              }}
+              className='service-img-edit'
+            >
+              Edit Profile
+            </label>
           </div>
           <table className='service-details-table'>
             {customerDetailsData.map((item, index) => (
@@ -139,8 +151,8 @@ function CustomersTopNav() {
                 <tr>
                   <th>Status</th>
                   <td className='rttable-status'>
-              <p className='rttable-status-container'>{item.status}</p>
-            </td>
+                    <p className='rttable-status-container'>{item.status}</p>
+                  </td>
                 </tr>
                 <tr>
                   <th>Actions</th>
@@ -161,6 +173,7 @@ function CustomersTopNav() {
                           <p
                             onClick={() => {
                               setShowEditCustomer(true);
+                              setShowOptionMenu(false);
                             }}
                             className='optionmenu-item'
                           >
@@ -176,6 +189,59 @@ function CustomersTopNav() {
               </div>
             ))}
           </table>
+        </ModalLayout>
+      )}
+      {showEditCustomer && (
+        <ModalLayout
+          btnbool={true}
+          btnTxt='Save'
+          btnClick={() => setShowEditCustomer(false)}
+          onCloseModal={() => setShowEditCustomer(false)}
+          backbtn={true}
+          title='Edit Customers'
+          backbtnClicked={() => setShowEditCustomer(false)}
+        >
+          <div className='service-image-details'>
+            <img
+              src={
+                selectedImage != null ? URL.createObjectURL(selectedImage) : ""
+              }
+              alt='Profile'
+              className='service-img'
+            />
+            <label for='addImageInput' className='service-img-edit'>
+              Change Photo
+            </label>
+            <input
+              type='file'
+              id='addImageInput'
+              accept='image/*'
+              onChange={handleImageChange}
+              className='imageselectinput'
+            />
+          </div>
+          <div className='spacer'></div>
+          <div className='add-customer-input-container'>
+            <InputField
+              label='First Name'
+              type='text'
+              placeholder='First Name'
+            />
+            <InputField label='Last Name' type='text' placeholder='Last Name' />
+          </div>
+          <div className='add-customer-input-container'>
+            <InputField
+              label='Email Address'
+              type='email'
+              placeholder='Email Address'
+            />
+            <InputField
+              label='Phone Number'
+              type='tel'
+              placeholder='Phone Number'
+            />
+          </div>
+          <InputField label='Address' type='text' placeholder='Address' />
         </ModalLayout>
       )}
     </div>
