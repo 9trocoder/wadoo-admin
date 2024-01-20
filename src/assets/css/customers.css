@@ -99,3 +99,16 @@
   color: #FDBE2C;
   margin-bottom: 40px;
 }
+
+.optionmenu-itemm {
+  padding:10px 24px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+  cursor: pointer;
+}
+
+.optionmenu-itemm:hover {
+  background-color: #fafafb;
+}

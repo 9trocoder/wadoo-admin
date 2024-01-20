@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { merchantData } from "../../data/merchant";
 import { optionIcon } from "../../constants/defaultValues";
 
 function MerchantsTable() {
+  const [clickedMenu, setClickedMenu] = useState("0");
+
+  const handleIt = (index) => {
+    if (clickedMenu === index) {
+      return setClickedMenu("0");
+    }
+    setClickedMenu(index);
+  };
   return (
     <div className='servicesview-container-table'>
       <table className='tptable'>
@@ -47,7 +55,34 @@ function MerchantsTable() {
             <td className='rttable-status'>
               <p className='rttable-status-container'>{item.status}</p>
             </td>
-            <td className='service-action'>{optionIcon}</td>
+            <td className='optionbtn-modal'>
+              <div
+                className='optionbtn'
+                key={index}
+                onClick={() => handleIt(index)}
+              >
+                {optionIcon}
+              </div>
+              {clickedMenu === index && (
+                <>
+                  <div
+                    className='optionmenu-overlay'
+                    onClick={() => setClickedMenu("0")}
+                  />
+                  <div className='optionmenu-body'>
+                    <p
+                      onClick={() => setClickedMenu("0")}
+                      className='optionmenu-itemm'
+                    >
+                      Verify Merchant
+                    </p>
+                    <p className='optionmenu-itemm'>View</p>
+                    <p className='optionmenu-itemm'>Suspend</p>
+                    <p className='optionmenu-itemm'>Delete</p>
+                  </div>
+                </>
+              )}
+            </td>
           </tr>
         ))}
       </table>
