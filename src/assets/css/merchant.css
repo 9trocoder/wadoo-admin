@@ -42,10 +42,10 @@
 }
 
 .merchant_general_right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .merchant_general_profileimg {
