@@ -411,3 +411,4 @@ export const addYellowIcon = (
     />
   </svg>
 );
+

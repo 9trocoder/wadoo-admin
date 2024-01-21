@@ -7,6 +7,29 @@ import "../../assets/css/merchant.css";
 function MerchantsTable() {
   const [clickedMenu, setClickedMenu] = useState("0");
   const [showModal, setShowModal] = useState(false);
+  const [activeBtn, setActiveBtn] = useState(0);
+  const btnList = [
+    {
+      id: 0,
+      btn_name: "General",
+    },
+    {
+      id: 1,
+      btn_name: "Products",
+    },
+    {
+      id: 2,
+      btn_name: "Transactions",
+    },
+    {
+      id: 3,
+      btn_name: "Invoice",
+    },
+    {
+      id: 4,
+      btn_name: "Subscription & Commission",
+    },
+  ];
 
   const handleIt = (index) => {
     if (clickedMenu === index) {
@@ -101,7 +124,20 @@ function MerchantsTable() {
         <BigModalLayout
           onCloseModal={() => setShowModal(false)}
           title='Business Name'
-        ></BigModalLayout>
+        >
+          <div className='merchant_nav'>
+            {btnList.map((item, index) => (
+              <button
+                onClick={() => setActiveBtn(index)}
+                className={`merchant_nav_btn ${
+                  activeBtn === index ? "merchant_nav_activebtn" : "merchant_nav_notactivebtn"
+                }`}
+              >
+                {item.btn_name}
+              </button>
+            ))}
+          </div>
+        </BigModalLayout>
       )}
     </div>
   );

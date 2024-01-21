@@ -1,1 +1,27 @@
-   
+.merchant_nav {
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    gap: 50px;
+}
+
+.merchant_nav_btn {
+    font-family: inherit;
+    border: 0;
+    background-color: transparent;
+    padding: 0px 0 10px 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+}
+
+.merchant_nav_activebtn {
+    color: #FDBE2C;
+    border-bottom: 1px solid #FDBE2C;
+}
+
+.merchant_nav_notactivebtn {
+    color: #959597;
+    border-bottom: #eaeaea;
+}
