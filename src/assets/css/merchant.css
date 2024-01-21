@@ -1,27 +1,116 @@
 .merchant_nav {
-    border-bottom: 1px solid #eaeaea;
-    display: flex;
-    gap: 50px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  gap: 50px;
 }
 
 .merchant_nav_btn {
-    font-family: inherit;
-    border: 0;
-    background-color: transparent;
-    padding: 0px 0 10px 0;
-    cursor: pointer;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 16px;
+  font-family: inherit;
+  border: 0;
+  background-color: transparent;
+  padding: 0px 0 10px 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
 }
 
 .merchant_nav_activebtn {
-    color: #FDBE2C;
-    border-bottom: 1px solid #FDBE2C;
+  color: #fdbe2c;
+  border-bottom: 1px solid #fdbe2c;
 }
 
 .merchant_nav_notactivebtn {
-    color: #959597;
-    border-bottom: #eaeaea;
+  color: #959597;
+  border-bottom: #eaeaea;
+}
+
+/* MERCHANT GENERAL */
+.merchant_general {
+  display: flex;
+  padding: 50px 0;
+  gap: 50px;
+}
+
+.merchant_general_left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.merchant_general_right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.merchant_general_profileimg {
+  width: 100px;
+  height: 100px;
+  border-radius: 9999px;
+  background-color: #fff8ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.merchant_general_profileimg span {
+  font-family: inherit;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  color: #fdbe2c;
+}
+
+.merchant_edit_profile {
+  padding: 10px 30px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 12px;
+  color: #fdbe2c;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+.merchant_bus_name {
+  font-family: inherit;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.merchant_bus_type {
+  font-family: inherit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  color: #000;
+  padding-bottom: 10px;
+}
+.merchant_bus_status {
+  margin-top: 10px;
+}
+.merchant_bus_status span {
+  border: 1px solid #34c38f;
+  padding: 8px 10px;
+  border-radius: 100px;
+  background: #e0f5eb;
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+  color: #34c38f;
 }
