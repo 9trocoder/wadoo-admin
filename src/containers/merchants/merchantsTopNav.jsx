@@ -79,9 +79,9 @@ function MerchantsTopNav() {
             />
             <div className='add-customer-input-container'>
               <InputField
-                label='Bussiness Email'
+                label='Business Email'
                 type='text'
-                placeholder='Bussiness Email'
+                placeholder='Business Email'
               />
               <InputField
                 label='Phone Number'

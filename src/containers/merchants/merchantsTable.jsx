@@ -14,6 +14,9 @@ import { merchantInvoiceData } from "../../data/merchant_invoice_data";
 import { merchantTransactionsData } from "../../data/merchant_transactions_data";
 import InputField from "../../components/InputField";
 import ModalLayout from "../../layout/ModalLayout";
+import AddPhoto from "../../components/AddPhoto";
+import Selection from "../../components/Selection";
+import AlertCardLayout from "../../layout/AlertCardLayout";
 
 function MerchantsTable() {
   const [clickedMenu, setClickedMenu] = useState("0");
@@ -21,6 +24,12 @@ function MerchantsTable() {
   const [activeBtn, setActiveBtn] = useState("general");
   const [showOptionMenu, setShowOptionMenu] = useState(false);
   const [showEditMerchant, setShowEditMerchant] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [showOptions, setShowOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [saveChanges, setSaveChanges] = useState(true);
+
+  const options = ["Option 1", "Option 2", "Option 3"];
   const btnList = [
     {
       id: "general",
@@ -49,6 +58,22 @@ function MerchantsTable() {
       return setClickedMenu("0");
     }
     setClickedMenu(index);
+  };
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    setShowOptions(false);
+  };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) setSelectedImage(file);
+  };
+  const handleDeletImage = () => {
+    setSelectedImage(null);
+  };
+
+  const toggleOptions = () => {
+    setShowOptions(!showOptions);
   };
   return (
     <div className='servicesview-container-table'>
@@ -144,10 +169,65 @@ function MerchantsTable() {
             setShowEditMerchant(false);
             setShowModal(true);
           }}
-          title="Edit Merchant"
-          btnTxt="Save"
+          title='Edit Merchant'
+          btnTxt='Save'
           btnbool={true}
-        ></ModalLayout>
+          btnClick={() => {
+            setShowEditMerchant(false);
+            setSaveChanges(true);
+          }}
+        >
+          <AddPhoto
+            selectedImage={selectedImage}
+            handleSelectedImage={handleImageChange}
+            handleDeletImage={handleDeletImage}
+          />
+          <div className='spacer'></div>
+          <InputField
+            label='Business Name'
+            type='text'
+            placeholder='Business Name'
+          />
+          <Selection
+            label='Business Type'
+            options={options}
+            showOptions={showOptions}
+            toggleOptions={toggleOptions}
+            selectedOption={selectedOption}
+            handleOptionClick={handleOptionClick}
+          />
+          <div className='add-customer-input-container'>
+            <InputField
+              label='Business Email'
+              type='text'
+              placeholder='Business Email'
+            />
+            <InputField
+              label='Phone Number'
+              type='tel'
+              placeholder='Phone Number'
+            />
+          </div>
+          <InputField label='Address' type='text' placeholder='Address' />
+        </ModalLayout>
+      )}
+      {saveChanges && (
+        <AlertCardLayout
+          text='Are you sure you want to save changes ?'
+          title='Save Changes'
+          acceptClick={() => {
+            setSaveChanges(false);
+            setShowModal(true);
+          }}
+          declineClick={() => {
+            setSaveChanges(false);
+            setShowEditMerchant(true);
+          }}
+          closeModal={() => {
+            setSaveChanges(false);
+            setShowEditMerchant(true);
+          }}
+        />
       )}
       {showModal && (
         <BigModalLayout
@@ -303,7 +383,7 @@ function MerchantsTable() {
                     <th>Actions</th>
                   </tr>
                   {merchantProductsData.map((item, index) => (
-                    <tr key={index}>
+                    <tr key={index} className='nahim'>
                       <td>{item.s_n}</td>
                       <td>
                         <img

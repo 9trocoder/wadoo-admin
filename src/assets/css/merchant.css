@@ -28,11 +28,22 @@
 
 /* MERCHANT GENERAL */
 .merchant_general {
+  flex: 1;
+  height: 100%;
+  overflow-y: scroll;
   display: flex;
   padding: 30px 0;
   gap: 50px;
 }
 
+.merchant_general::-webkit-scrollbar {
+  display: none;
+}
+
+.merchant_general {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 .merchant_general_left {
   flex: 1;
   display: flex;
@@ -123,6 +134,9 @@
   gap: 30px;
 }
 
+
+
+
 /* MERCHANT SUBSCRIPTION */
 .merchant_subscription {
   display: flex;
@@ -130,7 +144,7 @@
 }
 
 .merchant_subscription_left {
-  flex: .5;
+  flex: 0.5;
 }
 
 .merchant_subscription_right {
@@ -147,11 +161,11 @@
   border: none;
   font-family: inherit;
   border-radius: 10px;
-  background: #FDBE2C;
+  background: #fdbe2c;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
   line-height: 12px;
-  color: #FFF;
+  color: #fff;
   cursor: pointer;
 }
