@@ -13,31 +13,33 @@ import { merchantProductsData } from "../../data/merchant_products_data";
 import { merchantInvoiceData } from "../../data/merchant_invoice_data";
 import { merchantTransactionsData } from "../../data/merchant_transactions_data";
 import InputField from "../../components/InputField";
+import ModalLayout from "../../layout/ModalLayout";
 
 function MerchantsTable() {
   const [clickedMenu, setClickedMenu] = useState("0");
   const [showModal, setShowModal] = useState(false);
-  const [activeBtn, setActiveBtn] = useState(0);
+  const [activeBtn, setActiveBtn] = useState("general");
   const [showOptionMenu, setShowOptionMenu] = useState(false);
+  const [showEditMerchant, setShowEditMerchant] = useState(false);
   const btnList = [
     {
-      id: 0,
+      id: "general",
       btn_name: "General",
     },
     {
-      id: 1,
+      id: "products",
       btn_name: "Products",
     },
     {
-      id: 2,
+      id: "transactions",
       btn_name: "Transactions",
     },
     {
-      id: 3,
+      id: "invoice",
       btn_name: "Invoice",
     },
     {
-      id: 4,
+      id: "subscription",
       btn_name: "Subscription & Commission",
     },
   ];
@@ -131,6 +133,14 @@ function MerchantsTable() {
           </tr>
         ))}
       </table>
+      {showEditMerchant && (
+        <ModalLayout
+          onCloseModal={() => {
+            setShowEditMerchant(false);
+            setShowModal(true);
+          }}
+        ></ModalLayout>
+      )}
       {showModal && (
         <BigModalLayout
           onCloseModal={() => setShowModal(false)}
@@ -139,9 +149,9 @@ function MerchantsTable() {
           <div className='merchant_nav'>
             {btnList.map((item, index) => (
               <button
-                onClick={() => setActiveBtn(index)}
+                onClick={() => setActiveBtn(item.id)}
                 className={`merchant_nav_btn ${
-                  activeBtn === index
+                  activeBtn === item.id
                     ? "merchant_nav_activebtn"
                     : "merchant_nav_notactivebtn"
                 }`}
@@ -150,13 +160,21 @@ function MerchantsTable() {
               </button>
             ))}
           </div>
-          {activeBtn === 0 && (
+          {activeBtn === "general" && (
             <div className='merchant_general'>
               <div className='merchant_general_left'>
                 <div className='merchant_general_profileimg'>
                   <span>BL</span>
                 </div>
-                <label className='merchant_edit_profile'>Edit Profile</label>
+                <label
+                  className='merchant_edit_profile'
+                  onClick={() => {
+                    setShowEditMerchant(true);
+                    setShowModal(false);
+                  }}
+                >
+                  Edit Profile
+                </label>
 
                 <div className='merchant_business_profile'>
                   <p className='merchant_bus_name'>Business Name</p>
@@ -245,7 +263,7 @@ function MerchantsTable() {
               </div>
             </div>
           )}
-          {activeBtn === 1 && (
+          {activeBtn === "products" && (
             <div className='merchant_products'>
               <div className='servicestopnav-container'>
                 <div className='servicestopnav-container-left'>
@@ -303,7 +321,7 @@ function MerchantsTable() {
               </div>
             </div>
           )}
-          {activeBtn === 2 && (
+          {activeBtn === "transactions" && (
             <div className='merchant_products'>
               <div className='servicestopnav-container'>
                 <div className='servicestopnav-container-left'>
@@ -350,7 +368,7 @@ function MerchantsTable() {
               </div>
             </div>
           )}
-          {activeBtn === 3 && (
+          {activeBtn === "invoice" && (
             <div className='merchant_products'>
               <div className='servicestopnav-container'>
                 <div className='servicestopnav-container-left'>
@@ -396,7 +414,7 @@ function MerchantsTable() {
             </div>
           )}
 
-          {activeBtn === 4 && (
+          {activeBtn === "subscription" && (
             <div className='merchant_products'>
               <div className='merchant_subscription'>
                 <div className='merchant_subscription_left'>
