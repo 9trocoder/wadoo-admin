@@ -139,6 +139,14 @@ function MerchantsTable() {
             setShowEditMerchant(false);
             setShowModal(true);
           }}
+          backbtn={true}
+          backbtnClicked={() => {
+            setShowEditMerchant(false);
+            setShowModal(true);
+          }}
+          title="Edit Merchant"
+          btnTxt="Save"
+          btnbool={true}
         ></ModalLayout>
       )}
       {showModal && (
