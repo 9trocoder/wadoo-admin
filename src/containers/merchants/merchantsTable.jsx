@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import { merchantData } from "../../data/merchant";
-import { optionIcon } from "../../constants/defaultValues";
+import {
+  addIcon,
+  circleIcon,
+  filterIcon,
+  optionIcon,
+} from "../../constants/defaultValues";
 import BigModalLayout from "../../layout/BigModalLayout";
 import "../../assets/css/merchant.css";
 import { merchantGeneralData } from "../../data/merchant_general_data";
+import { merchantProductsData } from "../../data/merchant_products_data";
+import { merchantInvoiceData } from "../../data/merchant_invoice_data";
+import { merchantTransactionsData } from "../../data/merchant_transactions_data";
+import InputField from "../../components/InputField";
 
 function MerchantsTable() {
   const [clickedMenu, setClickedMenu] = useState("0");
@@ -141,96 +150,272 @@ function MerchantsTable() {
               </button>
             ))}
           </div>
-          {activeBtn === 0 && <div className='merchant_general'>
-            <div className='merchant_general_left'>
-              <div className='merchant_general_profileimg'>
-                <span>BL</span>
-              </div>
-              <label className='merchant_edit_profile'>Edit Profile</label>
+          {activeBtn === 0 && (
+            <div className='merchant_general'>
+              <div className='merchant_general_left'>
+                <div className='merchant_general_profileimg'>
+                  <span>BL</span>
+                </div>
+                <label className='merchant_edit_profile'>Edit Profile</label>
 
-              <div className='merchant_business_profile'>
-                <p className='merchant_bus_name'>Business Name</p>
-                <p className='merchant_bus_type'>Business Type</p>
-                <div className='merchant_bus_status'>
-                  <span>Active</span>
+                <div className='merchant_business_profile'>
+                  <p className='merchant_bus_name'>Business Name</p>
+                  <p className='merchant_bus_type'>Business Type</p>
+                  <div className='merchant_bus_status'>
+                    <span>Active</span>
+                  </div>
                 </div>
               </div>
+              <div className='merchant_general_right'>
+                <table className='service-details-table'>
+                  {merchantGeneralData.map((item, index) => (
+                    <div key={index}>
+                      <tr>
+                        <th>Merchant ID</th>
+                        <td>{item.merchant_id}</td>
+                      </tr>
+                      <tr>
+                        <th>Wallet Balance</th>
+                        <td>{item.wallet_balance}</td>
+                      </tr>
+                      <tr>
+                        <th>Email Address</th>
+                        <td>{item.email_address}</td>
+                      </tr>
+                      <tr>
+                        <th>Phone Number</th>
+                        <td>{item.phone_number}</td>
+                      </tr>
+                      <tr>
+                        <th>Address</th>
+                        <td>{item.address}</td>
+                      </tr>
+                      <tr>
+                        <th>Opening Days</th>
+                        <td>{item.opening_days}</td>
+                      </tr>
+                      <tr>
+                        <th>Opening Hours</th>
+                        <td>{item.opening_hours}</td>
+                      </tr>
+                      <tr>
+                        <th>Subscription Plan</th>
+                        <td>{item.subscription_plan}</td>
+                      </tr>
+                      <tr>
+                        <th>Date Created</th>
+                        <td>{item.date_created}</td>
+                      </tr>
+                      <tr>
+                        <th>Last Login Date</th>
+                        <td>{item.last_login_date}</td>
+                      </tr>
+                      <tr>
+                        <th>Actions</th>
+                        <td className='optionbtn-modal'>
+                          <div
+                            className='optionbtn'
+                            onClick={() => setShowOptionMenu(true)}
+                          >
+                            {optionIcon}
+                          </div>
+                          {showOptionMenu && (
+                            <>
+                              <div
+                                className='optionmenu-overlay'
+                                onClick={() => setShowOptionMenu(false)}
+                              />
+                              <div className='optionmenu-body'>
+                                <p
+                                  onClick={() => {}}
+                                  className='optionmenu-item'
+                                >
+                                  Edit
+                                </p>
+                                <p className='optionmenu-item'>Suspend</p>
+                                <p className='optionmenu-item'>Delete</p>
+                              </div>
+                            </>
+                          )}
+                        </td>
+                      </tr>
+                    </div>
+                  ))}
+                </table>
+              </div>
             </div>
-            <div className='merchant_general_right'>
-              <table className='service-details-table'>
-                {merchantGeneralData.map((item, index) => (
-                  <div key={index}>
-                    <tr>
-                      <th>Merchant ID</th>
-                      <td>{item.merchant_id}</td>
-                    </tr>
-                    <tr>
-                      <th>Wallet Balance</th>
-                      <td>{item.wallet_balance}</td>
-                    </tr>
-                    <tr>
-                      <th>Email Address</th>
-                      <td>{item.email_address}</td>
-                    </tr>
-                    <tr>
-                      <th>Phone Number</th>
-                      <td>{item.phone_number}</td>
-                    </tr>
-                    <tr>
-                      <th>Address</th>
-                      <td>{item.address}</td>
-                    </tr>
-                    <tr>
-                      <th>Opening Days</th>
-                      <td>{item.opening_days}</td>
-                    </tr>
-                    <tr>
-                      <th>Opening Hours</th>
-                      <td>{item.opening_hours}</td>
-                    </tr>
-                    <tr>
-                      <th>Subscription Plan</th>
-                      <td>{item.subscription_plan}</td>
-                    </tr>
-                    <tr>
-                      <th>Date Created</th>
-                      <td>{item.date_created}</td>
-                    </tr>
-                    <tr>
-                      <th>Last Login Date</th>
-                      <td>{item.last_login_date}</td>
-                    </tr>
-                    <tr>
-                      <th>Actions</th>
-                      <td className='optionbtn-modal'>
-                        <div
-                          className='optionbtn'
-                          onClick={() => setShowOptionMenu(true)}
-                        >
-                          {optionIcon}
-                        </div>
-                        {showOptionMenu && (
-                          <>
-                            <div
-                              className='optionmenu-overlay'
-                              onClick={() => setShowOptionMenu(false)}
-                            />
-                            <div className='optionmenu-body'>
-                              <p onClick={() => {}} className='optionmenu-item'>
-                                Edit
-                              </p>
-                              <p className='optionmenu-item'>Suspend</p>
-                              <p className='optionmenu-item'>Delete</p>
-                            </div>
-                          </>
-                        )}
-                      </td>
-                    </tr>
+          )}
+          {activeBtn === 1 && (
+            <div className='merchant_products'>
+              <div className='servicestopnav-container'>
+                <div className='servicestopnav-container-left'>
+                  <div className='services-inputForm'>
+                    {circleIcon}
+                    <input
+                      type='text'
+                      placeholder='Search'
+                      className='services-input'
+                    />
                   </div>
-                ))}
-              </table>
+                  <div className='services-filter'>{filterIcon}</div>
+                </div>
+                <button className='services-add-btn' onClick={() => {}}>
+                  {addIcon} Add New Service
+                </button>
+              </div>
+              <div className='servicesview-container-table'>
+                <table className='tptable'>
+                  <tr>
+                    <th>S/N</th>
+                    <th>Image</th>
+                    <th>Service Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Negotiable</th>
+                    <th>Date Created</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                  {merchantProductsData.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.s_n}</td>
+                      <td>
+                        <img
+                          src={item.image}
+                          alt=''
+                          className='tptable-image'
+                        />
+                      </td>
+                      <td>{item.service_name}</td>
+                      <td>{item.description}</td>
+                      <td>{item.price}</td>
+                      <td>{item.negotiable}</td>
+                      <td>{item.date_created}</td>
+                      <td className='rttable-status'>
+                        <p className='rttable-status-container'>
+                          {item.status}
+                        </p>
+                      </td>
+                      <td className='service-action'>{optionIcon}</td>
+                    </tr>
+                  ))}
+                </table>
+              </div>
             </div>
-          </div>}
+          )}
+          {activeBtn === 2 && (
+            <div className='merchant_products'>
+              <div className='servicestopnav-container'>
+                <div className='servicestopnav-container-left'>
+                  <div className='services-inputForm'>
+                    {circleIcon}
+                    <input
+                      type='text'
+                      placeholder='Search'
+                      className='services-input'
+                    />
+                  </div>
+                  <div className='services-filter'>{filterIcon}</div>
+                </div>
+              </div>
+              <div className='servicesview-container-table'>
+                <table className='tptable'>
+                  <tr>
+                    <th>S/N</th>
+                    <th>Service Name</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Date Created</th>
+                    <th>Wallet Balance</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                  {merchantTransactionsData.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.s_n}</td>
+                      <td>{item.service_name}</td>
+                      <td>{item.amount}</td>
+                      <td>{item.type}</td>
+                      <td>{item.date_created}</td>
+                      <td>{item.wallet_balance}</td>
+                      <td className='rttable-status'>
+                        <p className='rttable-status-container'>
+                          {item.status}
+                        </p>
+                      </td>
+                      <td className='service-action'>{optionIcon}</td>
+                    </tr>
+                  ))}
+                </table>
+              </div>
+            </div>
+          )}
+          {activeBtn === 3 && (
+            <div className='merchant_products'>
+              <div className='servicestopnav-container'>
+                <div className='servicestopnav-container-left'>
+                  <div className='services-inputForm'>
+                    {circleIcon}
+                    <input
+                      type='text'
+                      placeholder='Search'
+                      className='services-input'
+                    />
+                  </div>
+                  <div className='services-filter'>{filterIcon}</div>
+                </div>
+              </div>
+              <div className='servicesview-container-table'>
+                <table className='tptable'>
+                  <tr>
+                    <th>S/N</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Next Invoice Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                  {merchantInvoiceData.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.s_n}</td>
+                      <td>{item.date}</td>
+                      <td>{item.description}</td>
+                      <td>{item.amount}</td>
+                      <td>{item.next_invoice_date}</td>
+                      <td className='rttable-status'>
+                        <p className='rttable-status-container'>
+                          {item.status}
+                        </p>
+                      </td>
+                      <td className='service-action'>{optionIcon}</td>
+                    </tr>
+                  ))}
+                </table>
+              </div>
+            </div>
+          )}
+
+          {activeBtn === 4 && (
+            <div className='merchant_products'>
+              <div className='merchant_subscription'>
+                <div className='merchant_subscription_left'>
+                  <InputField
+                    label='Subscription Plan'
+                    placeholder='Subscription plan (Cannot be edited)'
+                    type='text'
+                  />
+                  <InputField
+                    label='Commission on in-app Payment'
+                    type='number'
+                    placeholder='Commission percentage'
+                  />
+                  <button className='merchant_subscription_btn'>Save</button>
+                </div>
+                <div className='merchant_subscription_right'></div>
+              </div>
+            </div>
+          )}
         </BigModalLayout>
       )}
     </div>
