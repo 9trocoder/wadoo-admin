@@ -27,7 +27,7 @@ function MerchantsTable() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
-  const [saveChanges, setSaveChanges] = useState(true);
+  const [saveChanges, setSaveChanges] = useState(false);
 
   const options = ["Option 1", "Option 2", "Option 3"];
   const btnList = [
