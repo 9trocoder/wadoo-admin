@@ -365,6 +365,10 @@
   line-height: 12px;
 }
 
+.viewpros tr:nth-child(even) {
+  background-color: #fff;
+}
+
 @keyframes Overlay--motion-slideInLeft {
   0% {
     transform: translateX(100%);
