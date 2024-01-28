@@ -13,6 +13,7 @@ import Commission from "./views/app/dashboards/commission";
 import Invoice from "./views/app/dashboards/invoice";
 import AuditLog from "./views/app/dashboards/auditLog";
 import Approval from "./views/app/dashboards/approval";
+import Settings from "./views/app/dashboards/settings";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,9 @@ const router = createBrowserRouter([
   {
     path: "/approvals",
     element: <Approval />
+  }, {
+    path: "/settings",
+    element: <Settings />
   }
 ]);
 

@@ -250,7 +250,10 @@ function Sidebar({ url }) {
             Approvals
           </span>
         </div>
-        <div className='sidebar-item-icon'>
+        <div
+          className='sidebar-item-icon'
+          onClick={() => navigate("/settings")}
+        >
           <Settingsicon color={url === "/settings" ? "#fdbe2c" : "#959597"} />
           <span
             className='sidebar-item-name'
