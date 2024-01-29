@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import InputField from "../../components/InputField";
+import {
+  addIcon,
+  circleIcon,
+  filterIcon,
+  optionIcon,
+} from "../../constants/defaultValues";
+import { settingsUserData } from "../../data/settings_user_data";
 
 function SettingsBody() {
   const [activeBtn, setActiveBtn] = useState("profile");
@@ -10,9 +17,9 @@ function SettingsBody() {
     if (file) setSelectedImage(file);
   };
 
-  const handleDeletImage = () => {
-    setSelectedImage(null);
-  };
+  //   const handleDeletImage = () => {
+  //     setSelectedImage(null);
+  //   };
   const settingsBtnList = [
     {
       id: "profile",
@@ -88,6 +95,58 @@ function SettingsBody() {
                 <InputField label='Role' placeholder='Role' type='text' />
               </div>
               <button className='merchant_subscription_btn'>Save</button>
+            </div>
+          </div>
+        )}
+        {activeBtn === "users" && (
+          <div className='settings_general'>
+            <div className='servicestopnav-container'>
+              <div className='servicestopnav-container-left'>
+                <div className='services-inputForm'>
+                  {circleIcon}
+                  <input
+                    type='text'
+                    placeholder='Search'
+                    className='services-input'
+                  />
+                </div>
+                <div className='services-filter'>{filterIcon}</div>
+              </div>
+              <button className='services-add-btn'>
+                {addIcon} Add New User
+              </button>
+            </div>
+            <div className='servicesview-container-table settingusertablebody'>
+              <table className='tptable'>
+                <tr>
+                  <th>S/N</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Email Address</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+                {settingsUserData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.s_n}</td>
+                    <td>
+                      <img src={item.image} alt='' className='tptable-image' />
+                    </td>
+                    <td>{item.name}</td>
+                    <td>{item.email_address}</td>
+                    <td>{item.role}</td>
+                    <td className='rttable-status'>
+                      <p className='rttable-status-container'>{item.status}</p>
+                    </td>
+                    <td className='optionbtn-modal'>
+                      <div className='optionbtn' key={index}>
+                        {optionIcon}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </table>
             </div>
           </div>
         )}
