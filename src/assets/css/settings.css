@@ -1,0 +1,24 @@
+.settings_body {
+  padding-top: 20px;
+}
+
+.settings_general {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.settings_profile {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 452px;
+}
+
+.settings_profile_image {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-top: 30px;
+}
