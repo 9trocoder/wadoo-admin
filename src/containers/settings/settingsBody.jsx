@@ -9,8 +9,10 @@ import {
 import { settingsUserData } from "../../data/settings_user_data";
 import ModalLayout from "../../layout/ModalLayout";
 import Selection from "../../components/Selection";
+import { useNavigate } from "react-router-dom";
 
 function SettingsBody() {
+  let navigate = useNavigate();
   const [activeBtn, setActiveBtn] = useState("profile");
   const [clickedMenu, setClickedMenu] = useState("0");
   const [selectedImage, setSelectedImage] = useState(null);
@@ -181,6 +183,7 @@ function SettingsBody() {
                   setActiveBtn("users");
                   setShowAddUser(false);
                 }}
+                btnClick={() => navigate("/set-password")}
               >
                 <InputField
                   label='Email Address'

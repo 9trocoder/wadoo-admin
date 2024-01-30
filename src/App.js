@@ -14,6 +14,7 @@ import Invoice from "./views/app/dashboards/invoice";
 import AuditLog from "./views/app/dashboards/auditLog";
 import Approval from "./views/app/dashboards/approval";
 import Settings from "./views/app/dashboards/settings";
+import SetPassword from "./views/app/Authentication/setPassword";
 
 const router = createBrowserRouter([
   {
@@ -62,15 +63,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/audit-log",
-    element: <AuditLog />
+    element: <AuditLog />,
   },
   {
     path: "/approvals",
-    element: <Approval />
-  }, {
+    element: <Approval />,
+  },
+  {
     path: "/settings",
-    element: <Settings />
-  }
+    element: <Settings />,
+  },
+  {
+    path: "/set-password",
+    element: <SetPassword />,
+  },
 ]);
 
 export default router;
