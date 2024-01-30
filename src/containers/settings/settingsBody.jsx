@@ -7,10 +7,17 @@ import {
   optionIcon,
 } from "../../constants/defaultValues";
 import { settingsUserData } from "../../data/settings_user_data";
+import ModalLayout from "../../layout/ModalLayout";
+import Selection from "../../components/Selection";
 
 function SettingsBody() {
   const [activeBtn, setActiveBtn] = useState("profile");
+  const [clickedMenu, setClickedMenu] = useState("0");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showAddUser, setShowAddUser] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+  const options = ["Option 1", "Option 2", "Option 3"];
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -38,6 +45,19 @@ function SettingsBody() {
       btn_name: "Configurations",
     },
   ];
+  const handleIt = (index) => {
+    if (clickedMenu === index) {
+      return setClickedMenu("0");
+    }
+    setClickedMenu(index);
+  };
+  const toggleOptions = () => {
+    setShowOptions(!showOptions);
+  };
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    setShowOptions(false);
+  };
   return (
     <>
       <div className='merchant_nav'>
@@ -112,7 +132,10 @@ function SettingsBody() {
                 </div>
                 <div className='services-filter'>{filterIcon}</div>
               </div>
-              <button className='services-add-btn'>
+              <button
+                onClick={() => setShowAddUser(true)}
+                className='services-add-btn'
+              >
                 {addIcon} Add New User
               </button>
             </div>
@@ -148,6 +171,32 @@ function SettingsBody() {
                 ))}
               </table>
             </div>
+
+            {showAddUser && (
+              <ModalLayout
+                title='Add User'
+                btnbool={true}
+                btnTxt='Add User'
+                onCloseModal={() => {
+                  setActiveBtn("users");
+                  setShowAddUser(false);
+                }}
+              >
+                <InputField
+                  label='Email Address'
+                  placeholder='Email Address'
+                  type='email'
+                />
+                <Selection
+                  label='Role'
+                  options={options}
+                  showOptions={showOptions}
+                  toggleOptions={toggleOptions}
+                  selectedOption={selectedOption}
+                  handleOptionClick={handleOptionClick}
+                />
+              </ModalLayout>
+            )}
           </div>
         )}
       </div>
