@@ -328,6 +328,30 @@ function SettingsBody() {
             )}
           </div>
         )}
+        {activeBtn === "security" && (
+          <div className='settings_general'>
+            <div className='settings_profile'>
+              <div className='settings_profile_form'>
+                <InputField
+                  label='Current Password'
+                  placeholder='Current Password'
+                  type='password'
+                />
+                <InputField
+                  label='New Password'
+                  placeholder='New Password'
+                  type='password'
+                />
+                <InputField
+                  label='Confirm New Password'
+                  placeholder='Confirm New Password'
+                  type='password'
+                />
+              </div>
+              <div className='merchant_subscription_btn'>Save</div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
