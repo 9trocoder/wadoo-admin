@@ -10,6 +10,7 @@ import { settingsUserData } from "../../data/settings_user_data";
 import ModalLayout from "../../layout/ModalLayout";
 import Selection from "../../components/Selection";
 import { useNavigate } from "react-router-dom";
+import { settingUserViewUserData } from "../../data/setting_user_view_user_data";
 
 function SettingsBody() {
   let navigate = useNavigate();
@@ -19,6 +20,8 @@ function SettingsBody() {
   const [showAddUser, setShowAddUser] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
+  const [showViewUser, setShowViewUser] = useState(false);
+  const [showEditUser, setShowEditUser] = useState(false);
   const options = ["Option 1", "Option 2", "Option 3"];
 
   const handleImageChange = (e) => {
@@ -165,9 +168,34 @@ function SettingsBody() {
                       <p className='rttable-status-container'>{item.status}</p>
                     </td>
                     <td className='optionbtn-modal'>
-                      <div className='optionbtn' key={index}>
+                      <div
+                        className='optionbtn'
+                        key={index}
+                        onClick={() => handleIt(index)}
+                      >
                         {optionIcon}
                       </div>
+                      {clickedMenu === index && (
+                        <>
+                          <div
+                            className='optionmenu-overlay'
+                            onClick={() => setClickedMenu("0")}
+                          />
+                          <div className='optionmmenu-body'>
+                            <p
+                              className='optionmenu-itemm'
+                              onClick={() => {
+                                setClickedMenu("0");
+                                setShowViewUser(true);
+                              }}
+                            >
+                              View
+                            </p>
+                            <p className='optionmenu-itemm'>Suspend</p>
+                            <p className='optionmenu-itemm'>Delete</p>
+                          </div>
+                        </>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -185,6 +213,104 @@ function SettingsBody() {
                 }}
                 btnClick={() => navigate("/set-password")}
               >
+                <InputField
+                  label='Email Address'
+                  placeholder='Email Address'
+                  type='email'
+                />
+                <Selection
+                  label='Role'
+                  options={options}
+                  showOptions={showOptions}
+                  toggleOptions={toggleOptions}
+                  selectedOption={selectedOption}
+                  handleOptionClick={handleOptionClick}
+                />
+              </ModalLayout>
+            )}
+            {showViewUser && (
+              <ModalLayout
+                btnbool={false}
+                title='View User'
+                onCloseModal={() => {
+                  setShowViewUser(false);
+                  setActiveBtn("users");
+                }}
+              >
+                <div className='service-image-details'>
+                  <img
+                    src={
+                      selectedImage != null
+                        ? URL.createObjectURL(selectedImage)
+                        : ""
+                    }
+                    alt='Profile'
+                    className='service-img'
+                  />
+                  <label
+                    onClick={() => setShowEditUser(true)}
+                    className='service-img-edit'
+                  >
+                    Edit Profile
+                  </label>
+                </div>
+                <table className='service-details-table'>
+                  {settingUserViewUserData.map((item, index) => (
+                    <div key={index}>
+                      <tr>
+                        <th>Full Name</th>
+                        <td>{item.full_name}</td>
+                      </tr>
+                      <tr>
+                        <th>Email Address</th>
+                        <td>{item.email_address}</td>
+                      </tr>
+                      <tr>
+                        <th>Role</th>
+                        <td>{item.role}</td>
+                      </tr>
+
+                      <tr>
+                        <th>Status</th>
+                        <td className='rttable-status'>
+                          <p className='rttable-status-container'>
+                            {item.status}
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Actions</th>
+                        <td className='optionbtn-modal'>
+                          <div className='optionbtn'>{optionIcon}</div>
+                        </td>
+                      </tr>
+                    </div>
+                  ))}
+                </table>
+              </ModalLayout>
+            )}
+            {showEditUser && (
+              <ModalLayout
+                onCloseModal={() => {
+                  setShowEditUser(false);
+                }}
+                btnbool={true}
+                btnTxt='Save'
+                btnClick={() => {
+                  setShowViewUser(false);
+                  setShowEditUser(false);
+                }}
+                backbtn={true}
+                title='Edit User'
+                backbtnClicked={() => {
+                  setShowEditUser(false);
+                }}
+              >
+                <InputField
+                  label='Full Name'
+                  placeholder='Full Name'
+                  type='text'
+                />
                 <InputField
                   label='Email Address'
                   placeholder='Email Address'
