@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputField from "../../components/InputField";
 import {
   addIcon,
+  addYellowIcon,
   circleIcon,
   filterIcon,
   optionIcon,
@@ -11,6 +12,7 @@ import ModalLayout from "../../layout/ModalLayout";
 import Selection from "../../components/Selection";
 import { useNavigate } from "react-router-dom";
 import { settingUserViewUserData } from "../../data/setting_user_view_user_data";
+import TextArea from "../../components/TextArea";
 
 function SettingsBody() {
   let navigate = useNavigate();
@@ -349,6 +351,88 @@ function SettingsBody() {
                 />
               </div>
               <div className='merchant_subscription_btn'>Save</div>
+            </div>
+          </div>
+        )}
+        {activeBtn === "configurations" && (
+          <div className='settings_general'>
+            <div className='settings_subscription_body'>
+              <p className='subscription_body_title'>Subscription Plan</p>
+              <button className='subscriptionsave'>Save</button>
+            </div>
+
+            <div className='subscription_body_middle'>
+              <div className='subscription_body_form'>
+                <div className='subscription_formitem'>
+                  <InputField
+                    label='Subscription Plan'
+                    placeholder='Subscription Plan'
+                    type='text'
+                  />
+                  <InputField label='Price' placeholder='Price' type='number' />
+                  <InputField
+                    label='Description'
+                    placeholder='Description'
+                    type='text'
+                  />
+                </div>
+                <div className='subscription_formitem'>
+                  <InputField
+                    label='Subscription Plan'
+                    placeholder='Subscription Plan'
+                    type='text'
+                  />
+                  <InputField label='Price' placeholder='Price' type='number' />
+                  <InputField
+                    label='Description'
+                    placeholder='Description'
+                    type='text'
+                  />
+                </div>
+                <div className='subscription_formitem'>
+                  <InputField
+                    label='Subscription Plan'
+                    placeholder='Subscription Plan'
+                    type='text'
+                  />
+                  <InputField label='Price' placeholder='Price' type='number' />
+                  <InputField
+                    label='Description'
+                    placeholder='Description'
+                    type='text'
+                  />
+                </div>
+              </div>
+              <div className='add_subscription_btn'>
+                {addYellowIcon} <span>Add subscription plan</span>{" "}
+              </div>
+            </div>
+
+            <div className='settings_subscription_body'>
+              <p className='subscription_body_title'>Commissions</p>
+              <button className='subscriptionsave'>Save</button>
+            </div>
+            <div className='subscription_body_middle'>
+              <div className='subscription_body_form'>
+                <div className='subscription_formitem'>
+                  <InputField
+                    label='Commission on in-app Payment'
+                    placeholder='Percentage'
+                    type='number'
+                  />
+                </div>
+              </div>
+            </div>
+            <div className='settings_subscription_body'>
+              <p className='subscription_body_title'>Business Type</p>
+              <button className='subscriptionsave'>Save</button>
+            </div>
+            <div className='subscription_body_middle'>
+              <div className='subscription_body_form'>
+                <div className='subscription_formitem'>
+                  <TextArea placeholder='Personal Care Services, Businesss support, Food/drinks, Health and Medicine, Automobile, Education, Wholesale distribution, Real Estate, Travel & transportation, Retailer,' />
+                </div>
+              </div>
             </div>
           </div>
         )}
